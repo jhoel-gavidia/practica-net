@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Practica1.Models.Entidad.Colaborador>
+
+<br>
+<a class="btn btn-success btn-sm" asp-action="Create">Create</a>
+<hr>
+<table class="table table-hover table-bordered table-sm">
+    <thead>
+        <tr class="table-info">
+            <th><strong><center>Id</center></strong></th>
+            <th><strong><center>Nombres</center></strong></th>
+            <th><strong><center>Apellidos</center></strong></th>
+            <th><strong><center>DNI</center></strong></th>
+            <th><strong><center>Sexo</center></strong></th>
+            <th><strong><center>Direccion</center></strong></th>
+            <th><strong><center>Empresa</center></strong></th>
+            <th><strong><center>Opciones</center></strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td align="center">@item.IdColaborador</td>
+                <td align="center">@item.NombColaborador</td>
+                <td align="center">@item.ApeColaborador</td>
+                <td align="center">@item.DNI</td>
+                <td align="center">@item.Sexo</td>
+                <td align="center">@item.Direccion</td>
+                <td align="center">@item.Empresa.RazonSocial</td>
+                <td align="center">
+                    <a class="btn btn-info btn-sm txt-white" asp-action="">Edit</a>
+                    <a class="btn btn-warning btn-sm text-white">Details</a>
+                    <a class="btn btn-danger btn-sm text-white">Delete</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+
