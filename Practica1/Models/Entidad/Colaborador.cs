@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Practica1.Models.Entidad
 {
@@ -37,6 +38,7 @@ namespace Practica1.Models.Entidad
 
         [ForeignKey(nameof(IdEmpresa))]
         [ValidateNever]
+        [JsonIgnore]
         public virtual Empresa Empresa { get; set; }
 
         [Display(Name = "Registro")]

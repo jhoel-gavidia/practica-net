@@ -16,7 +16,25 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<DAColaborador>();
 builder.Services.AddScoped<DAEmpresa>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AngularPolicy", policy =>
+    {
+        policy.WithOrigins(
+            "http://localhost:4200"
+            )
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
+ 
+
+    
+
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -30,17 +48,24 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app.UseStaticFiles();
+//app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseCors("AngularPolicy");
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();
+
+app.MapControllers();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
+
 
 app.MapRazorPages()
    .WithStaticAssets();

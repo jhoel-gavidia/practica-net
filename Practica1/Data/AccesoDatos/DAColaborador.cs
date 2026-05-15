@@ -13,6 +13,10 @@ namespace Practica1.Data.AccesoDatos
             _context = context;
         }
 
+        public DAColaborador()
+        {
+        }
+
         public IEnumerable<Colaborador> GetColaboradores() {
                 return _context.Colaboradores
                     .Include(c => c.Empresa)

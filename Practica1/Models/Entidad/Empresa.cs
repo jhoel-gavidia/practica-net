@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Practica1.Models.Entidad
 {
@@ -17,6 +18,8 @@ namespace Practica1.Models.Entidad
         [Display(Name = "RUC")]
         public string RUC { get; set; }
         public string Direccion { get; set; }
+
+        [JsonIgnore]
         public virtual ICollection<Colaborador> Colaborador { get; set; }
 
     }
