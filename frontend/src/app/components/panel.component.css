@@ -1,0 +1,383 @@
+/* Reseteo básico: aplica a todos los elementos */
+* {
+  box-sizing: border-box; /* Hace que padding y border se incluyan dentro del ancho y alto total */
+}
+
+/* Contenedor principal de todo el layout administrativo */
+.admin-layout {
+  display: flex; /* Coloca sidebar y contenido principal en fila */
+  min-height: 100vh; /* Altura mínima igual al alto completo de la ventana */
+  background-color: #f4f6f9; /* Fondo gris claro general */
+  font-family: Arial, Helvetica, sans-serif; /* Fuente principal del diseño */
+}
+/* Barra lateral */
+.sidebar {
+  width: 270px; /* Ancho fijo del sidebar */
+  background-color: #343a40; /* Fondo oscuro */
+  color: #c2c7d0; /* Color de texto gris claro */
+  min-height: 100vh; /* Ocupa toda la altura de la ventana */
+  border-right: 1px solid #454d55; /* Línea divisoria a la derecha */
+  display: flex; /* Activa flexbox en el sidebar */
+  flex-direction: column; /* Ordena su contenido en columna */
+  transition: width 0.3s ease; /* Anima suavemente el cambio de ancho */
+  overflow: hidden; /* Oculta contenido que sobresalga */
+}
+
+/* Logo superior */
+.brand {
+  display: flex; /* Coloca icono y texto en fila */
+  align-items: center; /* Centra verticalmente los elementos */
+  gap: 12px; /* Espacio entre icono y texto */
+  padding: 18px 20px; /* Espaciado interno */
+  border-bottom: 1px solid #454d55; /* Línea inferior separadora */
+  white-space: nowrap; /* Evita que el texto salte de línea */
+}
+
+/* Icono del logo */
+.brand-icon {
+  width: 40px; /* Ancho del icono */
+  height: 40px; /* Alto del icono */
+  border-radius: 50%; /* Lo convierte en círculo */
+  background-color: #d7dadf; /* Fondo gris claro */
+  display: flex; /* Flex para centrar contenido */
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
+  color: #343a40; /* Color del texto/icono interno */
+  font-weight: bold; /* Texto en negrita */
+  font-size: 1.4rem; /* Tamaño grande */
+  flex-shrink: 0; /* Evita que se encoja */
+}
+
+/* Texto del logo */
+.brand-text {
+  color: #f8f9fa; /* Color casi blanco */
+  font-size: 1.1rem; /* Tamaño de texto */
+  font-weight: 500; /* Grosor medio */
+  white-space: nowrap; /* No permite salto de línea */
+}
+
+/* Contenido interno del menú lateral */
+.sidebar-content {
+  padding: 14px 10px; /* Espacio interior */
+  overflow-y: auto; /* Scroll vertical si el contenido crece */
+  flex: 1; /* Ocupa el espacio restante dentro del sidebar */
+}
+
+/* Bloque del menú */
+.menu-block {
+  margin-bottom: 14px; /* Separación inferior entre bloques */
+}
+
+/* Títulos de las secciones del menú */
+.menu-section-title {
+  font-size: 0.85rem; /* Tamaño pequeño */
+  color: #adb5bd; /* Gris medio */
+  margin: 18px 14px 12px 14px; /* Márgenes alrededor */
+  white-space: nowrap; /* Mantiene el título en una sola línea */
+}
+
+/* Elemento principal del menú */
+.menu-item {
+  display: flex; /* Organiza contenido en fila */
+  justify-content: space-between; /* Separa izquierda y derecha */
+  align-items: center; /* Centra verticalmente */
+  padding: 12px 14px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer; /* Muestra mano al pasar el mouse */
+  margin-bottom: 4px; /* Separación con el siguiente item */
+  white-space: nowrap; /* Evita que el texto se parta */
+}
+
+/* Efecto al pasar el mouse sobre el item */
+.menu-item:hover {
+  background-color: #3f474e; /* Cambia el fondo */
+  color: #ffffff; /* Cambia el texto a blanco */
+}
+
+/* Parte izquierda de cada item */
+.menu-left {
+  display: flex; /* Organiza icono y texto en fila */
+  align-items: center; /* Centra verticalmente */
+  gap: 12px; /* Espacio entre icono y texto */
+  min-width: 0; /* Permite mejor control de recorte en flex */
+}
+
+/* Iconos del menú */
+.menu-icon {
+  width: 18px; /* Ancho fijo para alinear iconos */
+  display: inline-flex; /* Flex en línea */
+  justify-content: center; /* Centra el icono horizontalmente */
+  flex-shrink: 0; /* No permite que se reduzca */
+}
+
+/* Texto del menú */
+.menu-label {
+  white-space: nowrap; /* Mantiene el texto en una sola línea */
+}
+
+/* Flecha de la derecha */
+.menu-arrow {
+  color: #c2c7d0; /* Color gris claro */
+  flex-shrink: 0; /* Evita que se reduzca */
+}
+
+/* Contenedor del submenú */
+.submenu {
+  margin-top: 6px; /* Espacio superior */
+}
+
+/* Item del submenú */
+.submenu-item {
+  display: flex; /* Organiza los elementos en fila */
+  align-items: center; /* Centra verticalmente */
+  gap: 12px; /* Espacio entre círculo y texto */
+  padding: 12px 16px 12px 26px; /* Espaciado interno, con más sangría a la izquierda */
+  color: #c2c7d0; /* Texto gris claro */
+  border-radius: 8px; /* Bordes redondeados */
+  margin-bottom: 4px; /* Separación inferior */
+  white-space: nowrap; /* Impide salto de línea */
+}
+
+/* Hover del submenú */
+.submenu-item:hover {
+  background-color: #3f474e; /* Fondo al pasar el mouse */
+  color: #ffffff; /* Texto blanco */
+}
+
+/* Estado activo del submenú */
+.submenu-item.active {
+  background-color: #525a61; /* Fondo más claro para indicar activo */
+  color: #ffffff; /* Texto blanco */
+}
+
+/* Círculo del submenú */
+.submenu-circle {
+  width: 14px; /* Ancho del círculo */
+  height: 14px; /* Alto del círculo */
+  border: 2px solid #ffffff; /* Borde blanco */
+  border-radius: 50%; /* Forma circular */
+  flex-shrink: 0; /* Evita que se encoja */
+}
+
+/* Contenedor principal de la zona derecha */
+.main-wrapper {
+  flex: 1; /* Ocupa todo el espacio disponible restante */
+  display: flex; /* Flexbox para organizar topbar, contenido y footer */
+  flex-direction: column; /* Los coloca en columna */
+  min-height: 100vh; /* Altura mínima completa */
+  min-width: 0; /* Mejora comportamiento dentro de flex */
+}
+
+/* Barra superior */
+.topbar {
+  background-color: #ffffff; /* Fondo blanco */
+  border-bottom: 1px solid #dee2e6; /* Línea inferior */
+  height: 64px; /* Altura fija */
+  padding: 0 18px; /* Espaciado horizontal */
+  display: flex; /* Organiza contenido en fila */
+  justify-content: space-between; /* Separa izquierda y derecha */
+  align-items: center; /* Centra verticalmente */
+}
+
+/* Grupo izquierdo de la barra superior */
+.topbar-left {
+  display: flex; /* Elementos en fila */
+  align-items: center; /* Centrado vertical */
+  gap: 22px; /* Separación entre elementos */
+}
+
+/* Botón de alternar menú */
+.menu-toggle {
+  border: none; /* Sin borde */
+  background: transparent; /* Fondo transparente */
+  font-size: 1.2rem; /* Tamaño del icono/texto */
+  cursor: pointer; /* Cursor de mano */
+  color: #495057; /* Color gris oscuro */
+}
+
+/* Enlaces de la parte izquierda del topbar */
+.topbar-left a {
+  text-decoration: none; /* Quita subrayado */
+  color: #495057; /* Color gris oscuro */
+  font-size: 1rem; /* Tamaño normal */
+}
+
+/* Grupo derecho del topbar */
+.topbar-right {
+  display: flex; /* Elementos en fila */
+  align-items: center; /* Centrado vertical */
+  gap: 10px; /* Espacio entre elementos */
+  color: #495057; /* Color de texto/iconos */
+}
+
+/* Iconos superiores */
+.top-icon {
+  font-size: 1rem; /* Tamaño del icono */
+  cursor: pointer; /* Cursor de mano */
+}
+
+/* Badge o contador pequeño */
+.badge {
+  background-color: #dc3545; /* Fondo rojo */
+  color: #ffffff; /* Texto blanco */
+  border-radius: 10px; /* Bordes redondeados */
+  font-size: 0.7rem; /* Texto pequeño */
+  padding: 1px 6px; /* Espaciado interior */
+  margin-right: 4px; /* Separación a la derecha */
+}
+
+/* Variante amarilla del badge */
+.badge-yellow {
+  background-color: #ffc107; /* Fondo amarillo */
+  color: #212529; /* Texto oscuro */
+}
+
+/* Caja de información del usuario */
+.user-info {
+  display: flex; /* Elementos en fila */
+  align-items: center; /* Centrado vertical */
+  gap: 10px; /* Espacio entre avatar y texto */
+  margin-left: 8px; /* Separación hacia la izquierda */
+  white-space: nowrap; /* Mantiene el contenido en una sola línea */
+}
+
+/* Avatar del usuario */
+.avatar {
+  width: 36px; /* Ancho */
+  height: 36px; /* Alto */
+  border-radius: 50%; /* Lo hace circular */
+  background: linear-gradient(135deg, #9aa0a6, #6c757d); /* Fondo en degradado */
+}
+
+/* Área central de contenido */
+.content-area {
+  flex: 1; /* Ocupa el espacio restante */
+  background-color: #f4f6f9; /* Fondo gris claro */
+}
+
+/* Pie de página */
+.footer {
+  background-color: #ffffff; /* Fondo blanco */
+  border-top: 1px solid #dee2e6; /* Línea superior */
+  padding: 18px 20px; /* Espaciado interno */
+  display: flex; /* Flexbox */
+  justify-content: space-between; /* Separa extremos */
+  align-items: center; /* Centra verticalmente */
+  color: #495057; /* Color del texto */
+}
+
+/* ===== MODO CONTRAÍDO ===== */
+
+/* Cuando admin-layout también tiene la clase sidebar-mini, el sidebar se reduce */
+.admin-layout.sidebar-mini .sidebar {
+  width: 78px; /* Ancho reducido del menú lateral */
+}
+
+/* Centra el logo cuando el sidebar está contraído */
+.admin-layout.sidebar-mini .brand {
+  justify-content: center; /* Centra el contenido horizontalmente */
+  padding-left: 0; /* Quita padding izquierdo */
+  padding-right: 0; /* Quita padding derecho */
+}
+
+/* Oculta el texto del logo en modo contraído */
+.admin-layout.sidebar-mini .brand-text {
+  display: none; /* No se muestra */
+}
+
+/* Oculta títulos de sección en modo contraído */
+.admin-layout.sidebar-mini .menu-section-title {
+  display: none; /* No se muestran */
+}
+
+/* Centra items del menú y submenú en modo mini */
+.admin-layout.sidebar-mini .menu-item,
+.admin-layout.sidebar-mini .submenu-item {
+  justify-content: center; /* Centra el contenido */
+  padding-left: 0; /* Elimina padding izquierdo */
+  padding-right: 0; /* Elimina padding derecho */
+}
+
+/* Oculta el texto de las opciones del menú */
+.admin-layout.sidebar-mini .menu-label {
+  display: none; /* No se muestra */
+}
+
+/* Oculta las flechas del menú */
+.admin-layout.sidebar-mini .menu-arrow {
+  display: none; /* No se muestran */
+}
+
+/* Ajusta el padding del submenú en modo mini */
+.admin-layout.sidebar-mini .submenu-item {
+  padding-left: 0; /* Elimina sangría izquierda */
+}
+
+/* Responsive: estilos para pantallas menores o iguales a 900px */
+@media (max-width: 900px) {
+  .topbar-left {
+    gap: 12px; /* Reduce el espacio entre elementos */
+  }
+
+  .topbar-left a {
+    display: none; /* Oculta los enlaces superiores */
+  }
+
+  .footer {
+    flex-direction: column; /* Coloca los elementos uno debajo del otro */
+    align-items: flex-start; /* Los alinea al inicio */
+    gap: 8px; /* Espacio entre ellos */
+  }
+}
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 14px;
+}
+
+.tabla th {
+  background: #343a40;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.tabla td {
+  padding: 10px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.tabla tr:hover {
+  background: #f1f3f5;
+}
+
+.acciones {
+  display: flex;
+  gap: 6px;
+}
+
+.btn {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-edit {
+  background: #0d6efd;
+}
+
+.btn-details {
+  background: #198754;
+}
+
+.btn-delete {
+  background: #dc3545;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
